@@ -1,0 +1,33 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /user/mendezn/research/geant/B1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_83083/fast"
+/usr/bin/make -f CMakeFiles/cmTC_83083.dir/build.make CMakeFiles/cmTC_83083.dir/build
+make[1]: Entering directory '/user/mendezn/research/geant/B1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_83083.dir/CheckSymbolExists.c.o
+/mnt/misc/sw/x86_64/all/gnu/gcc/9.3.0/bin/gcc-9.3    -o CMakeFiles/cmTC_83083.dir/CheckSymbolExists.c.o   -c /user/mendezn/research/geant/B1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_83083
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83083.dir/link.txt --verbose=1
+/mnt/misc/sw/x86_64/all/gnu/gcc/9.3.0/bin/gcc-9.3      CMakeFiles/cmTC_83083.dir/CheckSymbolExists.c.o  -o cmTC_83083 
+/usr/bin/ld: CMakeFiles/cmTC_83083.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_83083.dir/build.make:87: cmTC_83083] Error 1
+make[1]: Leaving directory '/user/mendezn/research/geant/B1/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_83083/fast] Error 2
+
+File /user/mendezn/research/geant/B1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
